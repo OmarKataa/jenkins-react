@@ -29,3 +29,10 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Dockerize
+      if: success()
+      uses: manusa/actions-publish-docker@v1.1.2
+      with:
+        name: omarkataa/jenkins
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
