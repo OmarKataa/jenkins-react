@@ -4,7 +4,7 @@ pipeline {
     environment {
         
      VERSION = "3.5.5"   
-     CREDS = credentials('github') 
+//      CREDS = credentials('github') 
     }
 
     stages {
@@ -31,9 +31,17 @@ pipeline {
 //         } 
         
         stage('test') {
+            
+            environment {
+            
+            CREDS = credentials('github')
+            
+            }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USR', passwordVaraible: 'PSW')])
-              
+               
+              echo CREDS_USR
+               echo CREDS_PSW
+                
             }
         }
           
