@@ -11,17 +11,17 @@ pipeline {
         stage('install') {
             steps {
                 echo "install"
-                echo '${VERSION}'
-                echo '${CREDS}'
-                echo '${CREDS_USER}'
-                echo '${CREDS_PWD}'
+                echo  $VERSION
+                echo $CREDS
+                echo $CREDS_USER
+                echo $CREDS_PWD
                 sh("npm install")
             }
         }
        stage('test') {
            
            when {
-               expression { BRANCH_NAME == "dev"   }   
+               expression { $BRANCH_NAME == "dev"   }   
            }
             steps {
                 echo "test"
