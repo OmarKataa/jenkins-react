@@ -34,7 +34,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USR', passwordVaraible: 'PSW')])
                 echo "test"
-                sh("echo username:====> $USR password:======> $PSW ")
+                sh("echo username:====> ${USR} password:======> ${PSW} ")
             }
         }
           
