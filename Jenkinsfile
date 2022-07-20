@@ -43,7 +43,7 @@ pipeline {
                
               echo "docker push"
                 sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
-                sh('echo $CREDS_PSW | docker login -u $CREDS_USER --password-stdin ')
+                sh('echo $CREDS_PSW | docker login -u $CREDS_USR --password-stdin ')
                 sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
                 
           }
