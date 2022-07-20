@@ -8,28 +8,29 @@ pipeline {
                 sh("npm install")
             }
         }
-        
-    }
-}
+       stage('test') {
+            steps {
+                echo "test"
 
-//        stage('test') {
-//             steps {
-//                 echo "test"
-
-//                 npm run test
-//             }
-//         }
-//        stage('build') {
-//             steps {
-//                 echo "build"
-//                 npm run build
-//             }
-//         }
-//        stage('docker build') {
-//             steps {
-//               echo "docker build"
-//               docker build -t pip1 .
+               sh(" npm run test")
+            }
+        } 
+        stage('build') {
+            steps {
+                echo "build"
+                sh("npm run build")
+            }
+        }
+          
+       stage('docker build') {
+            steps {
+              echo "docker build"
+                sh('docker build -t pip1/${BUILD_NUMBER} .)
                 
-//           }
-//     }
-// }
+          }
+    }
+    }
+
+       
+     
+}
