@@ -25,7 +25,7 @@ pipeline {
        stage('docker build') {
             steps {
               echo "docker build"
-                sh('docker build -t pip1/${BUILD_NUMBER} .)
+                sh('docker build -t pip1/${BUILD_NUMBER} .')
                 
           }
     }
