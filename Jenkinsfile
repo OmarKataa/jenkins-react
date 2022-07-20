@@ -1,14 +1,28 @@
 pipeline {
     agent any
+    
+    environment {
+        
+     VERSION = "3.5.5"   
+     CREDS = credentials('github') 
+    }
 
     stages {
         stage('install') {
             steps {
                 echo "install"
+                echo '${VERSION}'
+                echo '${CREDS}'
+                echo '${CREDS_USER}'
+                echo '${CREDS_PWD}'
                 sh("npm install")
             }
         }
        stage('test') {
+           
+           when {
+               expression { BRANCH_NAME == "dev"   }   
+           }
             steps {
                 echo "test"
 
@@ -22,10 +36,17 @@ pipeline {
             }
         }
           
-       stage('docker build') {
+       
+        
+        stage('docker BUILD/push') {
             steps {
-              echo "docker build"
-                sh('docker build -t pip1/${BUILD_NUMBER} .')
+                withCredentials([
+                usernamePassword(credentials: (github,  usernameVariable: USER , passwordVariable: PWD ))
+                ])
+              echo "docker push"
+                sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
+                sh('echo $PWD | docker login -u $USER --password-stdin ')
+                sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
                 
           }
     }
