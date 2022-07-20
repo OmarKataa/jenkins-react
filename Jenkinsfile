@@ -40,12 +40,10 @@ pipeline {
         
         stage('docker BUILD/push') {
             steps {
-                withCredentials([
-                usernamePassword(credentialsId: 'github',  usernameVariable: 'USER' , passwordVariable: 'PWD' )
-                ])
+               
               echo "docker push"
                 sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
-                sh('echo $PWD | docker login -u $USER --password-stdin ')
+                sh('echo $CREDS_PSW | docker login -u $CREDS_USER --password-stdin ')
                 sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
                 
           }
