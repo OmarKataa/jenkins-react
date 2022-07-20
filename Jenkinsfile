@@ -8,46 +8,53 @@ pipeline {
     }
 
     stages {
-        stage('install') {
-            steps {
-                echo "install"
-                echo  "${VERSION}"
-                echo "${CREDS}"
+//         stage('install') {
+//             steps {
+//                 echo "install"
+//                 echo  "${VERSION}"
+//                 echo "${CREDS}"
                
-                sh("npm install")
-            }
-        }
-       stage('test') {
+//                 sh("npm install")
+//             }
+//         }
+//        stage('test') {
            
-           when {
+//            when {
     
-           branch 'dev'
-           }
-            steps {
-                echo "test"
+//            branch 'dev'
+//            }
+//             steps {
+//                 echo "test"
 
-               sh(" npm run test")
-            }
-        } 
-        stage('build') {
-            steps {
-                echo "build"
-                sh("npm run build")
-            }
-        }
+//                sh(" npm run test")
+//             }
+//         } 
+//         stage('build') {
+//             steps {
+//                 echo "build"
+//                 sh("npm run build")
+//             }
+//         }
           
        
-        
-        stage('docker BUILD/push') {
+         stage('test') {
             steps {
-               
-              echo "docker push"
-                sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
-                sh('echo $CREDS_PSW | docker login -u $CREDS_USR --password-stdin ')
-                sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
                 
-          }
-    }
+                sh("echo 'username CREDS_USR")
+                sh("echo 'password CREDS_PSW")
+
+            }
+        }
+//         stage('docker BUILD/push') {
+//             steps {
+               
+//               echo "docker push"
+//                 sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
+//                 sh('echo $CREDS_PSW | docker login -u $CREDS_USR --password-stdin ')
+//                 sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
+                
+//           }
+//     }
     }
 
        
