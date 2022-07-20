@@ -53,7 +53,7 @@ pipeline {
                 
                 sh("echo 'username $CREDS_USR'")
                 sh("echo 'password $CREDS_PSW'")
-                echo '${params.ENV}'
+                echo '${ENV}'
 
             }
         }
