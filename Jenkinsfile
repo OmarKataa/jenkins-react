@@ -40,8 +40,8 @@ pipeline {
          stage('test') {
             steps {
                 
-                sh("echo 'username CREDS_USR")
-                sh("echo 'password CREDS_PSW")
+                sh("echo 'username CREDS_USR'")
+                sh("echo 'password CREDS_PSW'")
 
             }
         }
