@@ -38,18 +38,18 @@ pipeline {
           
        
         
-//         stage('docker BUILD/push') {
-//             steps {
-//                 withCredentials([
-//                 usernamePassword(credentials: 'github',  usernameVariable: USER , passwordVariable: PWD )
-//                 ])
-//               echo "docker push"
-//                 sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
-//                 sh('echo $PWD | docker login -u $USER --password-stdin ')
-//                 sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
+        stage('docker BUILD/push') {
+            steps {
+                withCredentials([
+                usernamePassword(credentials: 'github',  usernameVariable: USER , passwordVariable: PWD )
+                ])
+              echo "docker push"
+                sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
+                sh('echo $PWD | docker login -u $USER --password-stdin ')
+                sh(' docker push omarkataa/jenkins-react2$BUILD_NUMBER')
                 
-//           }
-//     }
+          }
+    }
     }
 
        
