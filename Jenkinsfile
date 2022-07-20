@@ -41,7 +41,7 @@ pipeline {
         stage('docker BUILD/push') {
             steps {
                 withCredentials([
-                usernamePassword(credentials: 'github',  usernameVariable: USER , passwordVariable: PWD )
+                usernamePassword(credentialsId: 'github',  usernameVariable: USER , passwordVariable: PWD )
                 ])
               echo "docker push"
                 sh('docker build -t omarkataa/jenkins-react2${BUILD_NUMBER} . ')
