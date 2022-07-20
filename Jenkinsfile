@@ -33,8 +33,8 @@ pipeline {
         stage('test') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USR', passwordVaraible: 'PSW')])
-                echo "test"
-                sh('echo $PSW $USR  ')
+                echo USR
+              
             }
         }
           
