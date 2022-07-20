@@ -29,34 +29,36 @@ pipeline {
 //                sh(" npm run test")
 //             }
 //         } 
-//         stage('build') {
-//             steps {
-//                 echo "build"
-//                 sh("npm run build")
-//             }
-//         }
-          
-       
-         stage('test') {
-             input {
-             
-             message " please enter the env "
-                 ok "Done"
-                 parameters {
-                 
-                 choice(name: 'ENV' , choices: ['dev', 'stage', 'prod'], description: '')
-                 
-                 }
-             
-             }
+        
+        stage('test') {
             steps {
-                
-                sh("echo 'username $CREDS_USR'")
-                sh("echo 'password $CREDS_PSW'")
-                echo "${ENV}"
-
+                withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USR', passwordVaraible: 'PSW')])
+                echo "test"
+                sh("echo "username:====> $USR password:======> $PSW ")
             }
         }
+          
+       
+//          stage('test') {
+//              input {
+             
+//              message " please enter the env "
+//                  ok "Done"
+//                  parameters {
+                 
+//                  choice(name: 'ENV' , choices: ['dev', 'stage', 'prod'], description: '')
+                 
+//                  }
+             
+//              }
+//             steps {
+                
+//                 sh("echo 'username $CREDS_USR'")
+//                 sh("echo 'password $CREDS_PSW'")
+//                 echo "${ENV}"
+
+//             }
+//         }
 //         stage('docker BUILD/push') {
 //             steps {
                
