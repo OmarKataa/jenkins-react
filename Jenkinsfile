@@ -26,7 +26,6 @@ pipeline {
               echo "docker build"
               docker build -t pip1 .
                 
-            }
-        }
+          }
     }
 }
