@@ -8,24 +8,28 @@ pipeline {
                 npm install
             }
         }
-       stage('test') {
-            steps {
-                echo "test"
-
-                npm run test
-            }
-        }
-       stage('build') {
-            steps {
-                echo "build"
-                npm run build
-            }
-        }
-       stage('docker build') {
-            steps {
-              echo "docker build"
-              docker build -t pip1 .
-                
-          }
+        
     }
 }
+
+//        stage('test') {
+//             steps {
+//                 echo "test"
+
+//                 npm run test
+//             }
+//         }
+//        stage('build') {
+//             steps {
+//                 echo "build"
+//                 npm run build
+//             }
+//         }
+//        stage('docker build') {
+//             steps {
+//               echo "docker build"
+//               docker build -t pip1 .
+                
+//           }
+//     }
+// }
