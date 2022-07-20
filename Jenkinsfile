@@ -20,7 +20,7 @@ pipeline {
        stage('test') {
            
            when {
-               expression {  $env.BRANCH_NAME == 'dev'  }   
+               expression {  BRANCH_NAME == 'dev'  }   
            }
             steps {
                 echo "test"
