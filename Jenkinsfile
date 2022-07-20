@@ -41,6 +41,7 @@ pipeline {
                
               echo CREDS_USR
                echo CREDS_PSW
+                echo "multi"
                 
             }
         }
